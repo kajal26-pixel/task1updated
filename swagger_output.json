@@ -1,0 +1,227 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/signup": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "newUser",
+            "in": "body",
+            "description": "REGISTER",
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "LOG IN"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/forgotpw": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "forgot",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "FORGOT"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/forgotpw/verifyotp": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "otp",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "otp": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "OTP"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/forgotpw/resetpw": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reset",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                }
+              }
+            },
+            "description": "RESET"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/down/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/level/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AddUser": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "D234D"
+        },
+        "name": {
+          "type": "string",
+          "example": "rehya"
+        },
+        "email": {
+          "type": "string",
+          "example": "reh@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "78903"
+        },
+        "Dob": {
+          "type": "string",
+          "example": "02/20/2000"
+        },
+        "ReferredBy": {
+          "type": "string",
+          "example": "B234B"
+        }
+      }
+    }
+  }
+}
